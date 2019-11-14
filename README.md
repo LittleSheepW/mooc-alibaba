@@ -6,3 +6,13 @@
 的，缓存经常使用到的对象，可以减少内存并且可以提高访问速度。  
 > - 03、Java序列化引发的血案  `JavaSerializable03`，Json反序列化Map时如果原始值小于Int最大值，反序列化后原本为Long类型的字段，
 会变为Integer 类型，使用readObject()方法对对象中不可序列化的属性进行序列化。  
+> - 04、学习浅拷贝和深拷贝的正确姿势 `JavaClone04`    
+**浅拷贝之后一般情况下**：  
+①x.clone() != x的结果为true  
+②x.clone().getClass() == x.getClass()的结果为true
+③x.clone().equals(x)的结果也是true  
+**深拷贝的方式有4种**：  
+①重写clone()方法，手动将类中所有引用类型的数据重新生成新的对象  
+②使用JDK序列化方式实现  
+③使用commons-lang3中SerializationUtils.clone()方法  
+④使用Gson库进行Json序列化实现
