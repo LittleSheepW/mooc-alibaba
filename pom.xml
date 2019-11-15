@@ -66,6 +66,33 @@
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
+
+        <!-- 为实现单向对象属性映射而引用 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.1.8.RELEASE</version>
+        </dependency>
+
+        <!-- 为实现双向对象属性映射而引用 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+
+        <!-- MapStruct实现对象属性映射 -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.2.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.2.0.Final</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>
