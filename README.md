@@ -1,6 +1,6 @@
 # mooc-alibaba
 
-#####学习阿里巴巴编码规约手册详解
+####学习阿里巴巴编码规约手册详解
 
 > - 02、Integer缓存问题分析  `IntegerCacheProblemAnalysis02`，包装类型中缓存相关知识，Integer.chche缓存范围-128-127是JLS中要求
 的，缓存经常使用到的对象，可以减少内存并且可以提高访问速度。  
@@ -9,7 +9,7 @@
 > - 04、学习浅拷贝和深拷贝的正确姿势 `JavaClone04`    
 **浅拷贝之后一般情况下**：  
 ①x.clone() != x的结果为true  
-②x.clone().getClass() == x.getClass()的结果为true
+②x.clone().getClass() == x.getClass()的结果为true  
 ③x.clone().equals(x)的结果也是true  
 **深拷贝的方式有4种**：  
 ①重写clone()方法，手动将类中所有引用类型的数据重新生成新的对象  
