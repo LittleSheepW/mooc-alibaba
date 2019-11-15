@@ -1,13 +1,6 @@
 package com.ww.JavaSerializable03;
 
-import com.ww.JavaSerializable03.entity.Address;
-import com.ww.JavaSerializable03.entity.PersonTransit;
-import com.ww.JavaSerializable03.entity.SerializeAddress;
-import com.ww.JavaSerializable03.entity.SerializePersonTransit;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * @author: Sun
@@ -24,6 +17,45 @@ public class JavaSerializable03 implements Serializable {
      */
 
     /**
+     * 本节问题：
+     * 1、序列化和反序列化到底是什么?
+     * 答案：把对象转换为字节序列存储于磁盘或者进行网络传输的过程称为对象的序列化。
+     * 反序列化正好相反，是从网络传输过来的数据或此判断中读取序列化数据并转化成内存对象的过程。
+     *
+     * 2、为什么需要序列化和反序列化?
+     * 大家可以回忆一下，平时都是如果将文字文件、图片文件、视频文件、软件安装包等传给小伙伴时，这些资源在计算机中存储的方式是怎样的。
+     * 进而再思考，Java中的对象如果需要存储或者传输应该通过什么形式呢?
+     *
+     * 我们都知道，一个文件通常是一-个m个字节的序列: B0, B1, ... Bk, ... Bm-1。所有的I/O设备(例如网络、磁盘和终端)都被模型化为文件，
+     * 而所有的输入和输出都被当作对应文件的读和写来执行。因此本质上讲，文本文件，图片、视频和安装包等文件底层都被转化为二进制字节流来传输的,
+     * 对方得文件就需要对文件进行解析，因此就需要有能够根据不同的文件类型来解码出文件的内容的程序。
+     *
+     * 试想一个典型的场景:如果要实现Java远程方法调用，就需要将调用结果通过网路传输给调用方，如果调用方和服务提供方不在一台机器上
+     * 就很难共享内存，就需要将Java对象进行传输。而想要将Java中的对象进行网络传输或存储到文件中，就需要将对象转化为二进制字节流，
+     * 这就是所谓的序列化。存储或传输之后必然就需要将二进制流读取并解析成Java对象，这就是所谓的反序列化。
+     *
+     * 答案：为了方便存储到文件系统、数据库系统或网络传输等。
+     *
+     * 3、它的主要使用场景有哪些?
+     * · 远程方法调用(RPC) 的框架里会用到序列化。
+     * · 将对象存储到文件中时，需要用到序列化。
+     * · 将对象存储到缓存数据库(如Redis) 时需要用到序列化。
+     * · 通过序列化和反序列化的方式实现对象的深拷贝。
+     *
+     * 3、Java序列化常见的方案有哪些?
+     * Java原生序列化、Hessian序列化、Kryo序列化、JSON序列化等。
+     *
+     * 4、各种常见序列化方案的区别有哪些?
+     * · Java序列化的优点是:对对象的结构描述清晰，反序列化更安全。主要缺点是:效率低，序列化后的二进制流较大。
+     * · Hession序列化二进制流较Java序列化更小，且序列化和反序列化耗时更短。但是父类和子类有相同类型属性时，由于先序列化子类再序列化父类，
+     * 因此反序列化时子类的同名属性会被父类的值覆盖掉，开发时要特别注意这种情况。
+     * · Kryo优点是:速度快、序列化后二进制流体积小、反序列化超快。但是缺点是:跨语言支持复杂。注册模式序列化更快，但是编程更加复杂。
+     * · JSON序列化的优势在于可读性更强。主要缺点是:没有携带类型信息，只有提供了准确的类型信息才能准确地进行反序列化，这点也特别容易引发线上问题。
+     *
+     * 5、实际的业务开发中有哪些坑点?
+     */
+
+    /**
      * 包装类型不可强转，为什么包装类型不可强转？
      * Integer i = 100000;
      * Long l = (Long) i;
@@ -33,52 +65,4 @@ public class JavaSerializable03 implements Serializable {
      * 父类对象声明为父类类型后，不可以通过强制转换转换为子类型
      */
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        // 使用自定义writeObject()实现对不可序列化的属性进行序列化
-        PersonTransit personTransit = new PersonTransit();
-        personTransit.setId(1L);
-        personTransit.setName("sunshine");
-        personTransit.setMale(true);
-
-        Address address = new Address("liuran");
-        personTransit.setAddress(address);
-
-        List<PersonTransit> personTransitList = new ArrayList<PersonTransit>();
-        personTransitList.add(new PersonTransit(2L, "sun", false,
-                new ArrayList<PersonTransit>(), new Address("liuran2")));
-        personTransit.setFriends(personTransitList);
-
-
-        File file1 = new File("/Users/sun/Desktop/JavaSerializable03-01");
-        ObjectOutputStream objectOutputStream1 = new ObjectOutputStream(new FileOutputStream(file1));
-        objectOutputStream1.writeObject(personTransit);
-
-        ObjectInputStream objectInputStream1 = new ObjectInputStream(new FileInputStream(file1));
-        PersonTransit readPersonTransit = (PersonTransit) objectInputStream1.readObject();
-        System.out.println(readPersonTransit);
-
-        System.out.println("------------------------------------------------------------------");
-
-        // 使用默认的objectOutputStream.writeObject()实现对不可序列化属性序列化
-        SerializePersonTransit serializePersonTransit = new SerializePersonTransit();
-        serializePersonTransit.setId(1L);
-        serializePersonTransit.setName("sunshine");
-        serializePersonTransit.setMale(true);
-
-        SerializeAddress serializeAddress = new SerializeAddress("liuran");
-        serializePersonTransit.setSerializeAddress(serializeAddress);
-
-        List<SerializePersonTransit> serializePersonTransitList = new ArrayList<SerializePersonTransit>();
-        serializePersonTransitList.add(new SerializePersonTransit(2L, "sun", false,
-                new ArrayList<SerializePersonTransit>(), new SerializeAddress("liuran2")));
-        serializePersonTransit.setFriends(serializePersonTransitList);
-
-        File file2 = new File("/Users/sun/Desktop/JavaSerializable03-02");
-        ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(new FileOutputStream(file2));
-        objectOutputStream2.writeObject(serializePersonTransit);
-
-        ObjectInputStream objectInputStream2 = new ObjectInputStream(new FileInputStream(file2));
-        SerializePersonTransit readSerializePersonTransit = (SerializePersonTransit) objectInputStream2.readObject();
-        System.out.println(readSerializePersonTransit);
-    }
 }

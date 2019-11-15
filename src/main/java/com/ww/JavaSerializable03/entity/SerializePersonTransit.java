@@ -13,6 +13,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ * 使用支持序列化的Address Decorator对不支持序列化的属性进行序列化
+ */
 public class SerializePersonTransit implements Serializable {
 
     private Long id;
@@ -20,5 +23,5 @@ public class SerializePersonTransit implements Serializable {
     private Boolean male;
     private List<SerializePersonTransit> friends;
     private SerializeAddress serializeAddress;
-    
+
 }

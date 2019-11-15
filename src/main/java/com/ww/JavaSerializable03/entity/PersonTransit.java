@@ -34,8 +34,10 @@ public class PersonTransit implements Serializable {
         this.id = in.readLong();
         this.name = in.readUTF();
         this.male = in.readBoolean();
+        // 代码自上至下执行到in.readObject();之后会再次跳转到53行开始读集合中的每个对象，只有在friends中没有数据时才会继续向下执行。
         this.friends = (List<PersonTransit>) in.readObject();
         this.address = new Address(in.readUTF());
+        System.out.println("Deserializing address end --- " + address.getDetail());
     }
 
     /**
@@ -53,6 +55,8 @@ public class PersonTransit implements Serializable {
         out.writeUTF(name);
         out.writeBoolean(male);
         out.writeObject(friends);
+        // 代码自上至下执行到out.writeObject(friends);之后会再次跳转到53行开始写集合中的每个对象，只有在friends中没有数据时才会继续向下执行。
+        System.out.println("Start serializing address --- " + address.getDetail());
         out.writeUTF(address.getDetail());
     }
 }

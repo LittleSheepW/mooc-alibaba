@@ -15,6 +15,20 @@ public class IntegerCacheProblemAnalysis02 {
      * 都会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用equals方法进行判断。
      */
 
+    /**
+     * 本节问题：
+     * 1、Integer.cache为什么会缓存-128-127之间的值呢?
+     * 答案：是为了自动装箱时可以复用这些对象，这也是JLS的要求。如果不要求必须新建一个整型对象，
+     * 缓存最常用的值(提前构造缓存范围内的整型对象)，会更省空间，速度也更快。
+     *
+     * 2、Integer缓存区间可以修改吗?
+     * 答案：可以修改最大值的缓存范围，两种方式：
+     * ①、增加虚拟机参数 -XX:AutoBoxCacheMax=<size>
+     * ②、-Djava.lang.Integer.IntegerCache.high
+     *
+     * 3、其它的包装类型有没有类似缓存?
+     * Byte、Short、Long、Character、Boolean也是有类似缓存的但是并不支持修改缓存的范围，Float、Double是没有的。
+     */
 
     /**
      * 学习过程中所遇疑问：
@@ -24,51 +38,4 @@ public class IntegerCacheProblemAnalysis02 {
      * 除此之外在别的地方是无法再次修改该变量的。
      */
 
-    public static void main(String[] args) {
-
-        // 缓存常用的包装对象可以节省内存(空间)并提供更快的速度
-
-        // 默认缓存-128-127之间，注释中没有指出可以修改缓存范围
-        /*Byte a = 127, b = 127;
-        System.out.println(a == b);*/
-
-        // 默认缓存-128-127之间，注释中没有指出可以修改缓存范围
-        /*Short a = 126, b = 126, c = 128, d = 128;
-        System.out.println(a == b);
-        System.out.println(c == d);*/
-
-        /**
-         * 默认缓存-128-127之间 JLS中明确指出的缓存范围，
-         * 可以修改最大值的缓存范围，两种方式：
-         * 1、增加虚拟机参数 -XX:AutoBoxCacheMax=<size>
-         * 2、-Djava.lang.Integer.IntegerCache.high
-         */
-        /*Integer a = 100, b = 100, c = 150, d = 150;
-        System.out.println(a == b);
-        System.out.println(c == d);*/
-
-        // 默认缓存-128-127之间，注释中没有指出可以修改缓存范围
-        /*Long a = -128L, b = -128L, c = 150L, d = 150L;
-        System.out.println(a == b);
-        System.out.println(c == d);*/
-
-        // 没有缓存范围
-        /*Float a = 1f, b = 1f, c = 128f, d = 128f;
-        System.out.println(a == b);
-        System.out.println(c == d);*/
-
-        // 没有缓存范围
-        /*Double a = 127.0, b = 127.0, c = 128.0, d = 128.0;
-        System.out.println(a == b);
-        System.out.println(c == d);*/
-
-        // 默认缓存0-127之间，注释中没有指出可以修改缓存范围
-        /*Character a = 126, b = 126, c = 128, d = 128;
-        System.out.println(a == b);
-        System.out.println(c == d);*/
-
-        // 默认缓存TRUE、FALSE两个布尔对象
-        /*Boolean a = true,b = false;
-        System.out.println(a == b);*/
-    }
 }
