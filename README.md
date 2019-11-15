@@ -15,4 +15,5 @@
 ①重写clone()方法，手动将类中所有引用类型的数据重新生成新的对象  
 ②使用JDK序列化方式实现  
 ③使用commons-lang3中SerializationUtils.clone()方法  
-④使用Gson库进行Json序列化实现
+④使用Gson库进行Json序列化实现  
+> - 05、分层领域模型使用解读 `HierarchicalDomainModel05`
