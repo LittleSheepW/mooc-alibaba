@@ -54,11 +54,17 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- commons-lang3 -->
+        <!-- commons-lang3  -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
+        </dependency>
+        <!-- commons-collections4 集合工具类 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
         </dependency>
 
         <dependency>
@@ -100,6 +106,13 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.9</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- @NotNull @Nullable注解实现接口使用者预防空指针 -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>17.0.0</version>
         </dependency>
     </dependencies>
 
