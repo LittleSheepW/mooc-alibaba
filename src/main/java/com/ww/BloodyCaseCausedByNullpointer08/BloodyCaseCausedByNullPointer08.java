@@ -32,45 +32,15 @@ public class BloodyCaseCausedByNullPointer08 {
      * 1、如何学习NullPointerException ( 简称为NPE) ?
      * 答：①通过源码学习NullPointerException
      *    ②通过JLS第11张Exceptions对异常进行学习
+     *
      * 2、哪些用法可能造成NPE相关的BUG?
+     * ①自动拆箱
+     * ②使用@NonNull注解后容易出现
+     * ③接收到对象后不判null直接进行使用
+     *
      * 3、在业务开发中作为接口提供者和使用者如何更有效地避免空指针呢?
+     * 接口提供者：返回空集合、使用Optional、使用空对象设计模式
+     * 接口使用者：null检查、使用Objects、使用commons包、使用guava包、使用lombok @Nonnull注解、使用idea的@NotNull和@Nullable注解
      */
-
-
-    public static <T, V> List<V> partitionCallList(List<T> dataList, int size, Function<List<T>, List<V>> function) {
-
-        if (CollectionUtils.isEmpty(dataList)) {
-            return new ArrayList<>(0);
-        }
-        Preconditions.checkArgument(size > 0, "size 必须大于0");
-
-        return Lists.partition(dataList, size)
-                .stream()
-                .map(function)
-                .reduce(new ArrayList<>(),
-                        (resultList1, resultList2) -> {
-                            resultList1.addAll(resultList2);
-                            return resultList1;
-                        });
-    }
-
-    public void test() {
-        Optional<String> byId1 = getById("1");
-        System.out.println(byId1.isPresent());
-
-        Optional<String> byId2 = getById("2");
-        System.out.println(byId2.isPresent());
-    }
-
-
-    public Optional<String> getById(String id) {
-        Map<String, String> stringMap = new HashMap<String, String>(){{
-            put("1", "sun");
-            put("2", "sunshine");
-            put("3", "root");
-        }};
-
-        return Optional.ofNullable(stringMap.get(id));
-    }
 
 }
