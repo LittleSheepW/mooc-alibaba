@@ -1,12 +1,5 @@
 package com.ww.BloodyCaseCausedByNullpointer08;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
-import org.springframework.util.CollectionUtils;
-
-import java.util.*;
-import java.util.function.Function;
-
 /**
  * @author: Sun
  * @create: 2019-11-18 15:19
@@ -37,6 +30,7 @@ public class BloodyCaseCausedByNullPointer08 {
      * ①自动拆箱
      * ②使用@NonNull注解后容易出现
      * ③接收到对象后不判null直接进行使用
+     * ④调用null对象的的实例方法
      *
      * 3、在业务开发中作为接口提供者和使用者如何更有效地避免空指针呢?
      * 接口提供者：返回空集合、使用Optional、使用空对象设计模式

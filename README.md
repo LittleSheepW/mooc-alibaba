@@ -19,4 +19,11 @@
 > - 05、分层领域模型使用解读 `HierarchicalDomainModel05`  
 > - 06、Java属性映射的正确姿势 `AttributeMapping06`  
 > - 07、过期类、属性、接口的正确处理姿势 `Deprecated07`    
-> - 08、空指针引发的血案 `BloodyCaseCausedByNullpointer08`  
+> - 08、空指针引发的血案 `BloodyCaseCausedByNullpointer08`    
+> - 09、当switch遇到空指针 `SwitchMeetNullpointer09`  
+switch语句必须满足以下条件，否则会出现编译错误:  
+1、与switch语句关联的每个case都必须和switch的表达式的类型一致;  
+2、如果switch表达式是枚举类型 case常量也必须是枚举类型;   
+3、不允许同一个switch的两个case常量的值相同;  
+4、和switch语句关联的常量不能为null ;  
+5、一个switch语句最多有-个default标签。  
