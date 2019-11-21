@@ -28,3 +28,4 @@ switch语句必须满足以下条件，否则会出现编译错误:
 4、和switch语句关联的常量不能为null ;  
 5、一个switch语句最多有-个default标签。  
 > - 10、枚举类的正确学习方式 `EnumerationClassCorrectLearningPosture10`  
+> - 11、ArrayList的SubList和Arrays的asList学习 `ArrayListSubListAndArraysAsList11`
