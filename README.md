@@ -30,3 +30,10 @@ switch语句必须满足以下条件，否则会出现编译错误:
 > - 10、枚举类的正确学习方式 `EnumerationClassCorrectLearningPosture10`  
 > - 11、ArrayList的SubList和Arrays的asList学习 `ArrayListSubListAndArraysAsList11`  
 > - 12、添加注释的正确姿势 `AddTheCorrectPostureForTheAnnotation12`  
+> - 13、你真的了解可变参数吗 `DoYouReallyUnderstandVariadicParameters13`  
+> **为了兼容Java SE 5.0之前的版本，方法签名的选择分为3个阶段：**  
+> - 第一阶段:不让自动装箱和拆箱，也不能使用可变参数的情况下选择重载。如果无法选择合适地方法，则进入第二阶段。由于不允许自动拆箱、拆箱和可变参数，
+这一条保证了Java SE 5.0之前的函数调用的合法性。如果在第一阶段可变参数生效，如果在一个已经声明了m(Object) 函数的类中声明m(Obejct..obj)函数，
+会导致即使有更适合的表达式(如m(null))也不会选择 m(Object) 。  
+> - 第二阶段:允许自动装箱和拆箱，但是仍然排除变长参数的重载。如果仍然无法选择合适的方法，则进入第三阶段。这是为了保证，如果定义了定长参数的函数情况下，不会选择变长参数。
+> - 第三阶段:允许自动装箱、拆箱和变长参数的重载。  
