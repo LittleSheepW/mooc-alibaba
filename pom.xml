@@ -114,6 +114,14 @@
             <artifactId>annotations</artifactId>
             <version>17.0.0</version>
         </dependency>
+
+        <!-- 查看NamedThreadFactory源码 -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.10.6</version>
+        </dependency>
+
     </dependencies>
 
 </project>
