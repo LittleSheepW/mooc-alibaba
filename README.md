@@ -50,3 +50,4 @@ switch语句必须满足以下条件，否则会出现编译错误:
 Java反编译和反汇编的区别：
 反编译是指:将class文件反编译成Java源码的过程。  
 反汇编是指:将class文件反解析为更可读的虚拟机指令的过程。  
+> - 16、虚拟机退出时机问题研究 `ResearchOnTheTimingOfVirtualMachineExit16`  
