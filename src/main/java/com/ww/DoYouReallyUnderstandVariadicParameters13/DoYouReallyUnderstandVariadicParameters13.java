@@ -1,5 +1,7 @@
 package com.ww.DoYouReallyUnderstandVariadicParameters13;
 
+import com.ww.DoYouReallyUnderstandVariadicParameters13.util.ContainsBooleanUtils;
+
 /**
  * @author: Sun
  * @create: 2019-11-26 15:53
@@ -31,7 +33,7 @@ public class DoYouReallyUnderstandVariadicParameters13 {
      * 1、结合之前空指针章节所讲的内容，思考示例程序{@link com.ww.DoYouReallyUnderstandVariadicParameters13.BooleanDemo}有啥隐患? 该如何避免呢?
      *
      * 2、结合本节学的内容，请封装一个工具类，包装org.apache.commons.lang3.BooleanUtils#or(java.lang.Boolean..).函数，避免选择函数签名时的冲突问题。
-     * 封装好的工具类：{@link com.ww.DoYouReallyUnderstandVariadicParameters13.ContainsBooleanUtils}
+     * 封装好的工具类：{@link ContainsBooleanUtils}
      *
      * @param args
      */

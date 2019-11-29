@@ -1,4 +1,4 @@
-package com.ww.DoYouReallyUnderstandVariadicParameters13;
+package com.ww.DoYouReallyUnderstandVariadicParameters13.util;
 
 import org.apache.commons.lang3.BooleanUtils;
 
