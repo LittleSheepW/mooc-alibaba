@@ -51,3 +51,12 @@ Java反编译和反汇编的区别：
 反编译是指:将class文件反编译成Java源码的过程。  
 反汇编是指:将class文件反解析为更可读的虚拟机指令的过程。  
 > - 16、虚拟机退出时机问题研究 `ResearchOnTheTimingOfVirtualMachineExit16`  
+> - 17、如何解决条件语句的多嵌套问题 `HowToSolveTheMultiLevelNestingProblemOfConditionalStatements17`  
+> - 18、一些异常处理建议 `SomeExceptionHandlingSuggestions18`  
+> - 19、日志学习和使用的正确姿势 `LogLearningAndUsingTheCorrectPosture19`  
+> - 常用的日志级别分为: ERROR、WARN、INFO、DEBUG、TRACE。  
+ERROR日志的使用场景是:影响到程序正常运行或影响到当前请求正常运行的异常情况。比如打开配置失败、调用二方或者三方库抛出异常等。  
+WARN日志的使用场景是:不应该出现，但是不影响程序正常运行，不影响请求正常执行的情况。如找不到某个配置但是使用了默认配置，比如某些业务异常。  
+INFO日志的使用场景是:需要了解的普通信息，比如接口的参数和返回值，异步任务的执行时间和任务内容等。  
+DEBUG日志的使用场景是:所有调试阶段想了解的信息。比如无法进行远程DEBUG时，添加DEBUG日志在待研究的函数的某些位置打印参数和中间数据等。  
+TRACE日志的使用场景是:非常详细的系统运行信息，比如某个中间件读取配置，启动完成等。实际业务开发中TRACE级别的日志很少使用。  
