@@ -60,3 +60,13 @@ WARN日志的使用场景是:不应该出现，但是不影响程序正常运行
 INFO日志的使用场景是:需要了解的普通信息，比如接口的参数和返回值，异步任务的执行时间和任务内容等。  
 DEBUG日志的使用场景是:所有调试阶段想了解的信息。比如无法进行远程DEBUG时，添加DEBUG日志在待研究的函数的某些位置打印参数和中间数据等。  
 TRACE日志的使用场景是:非常详细的系统运行信息，比如某个中间件读取配置，启动完成等。实际业务开发中TRACE级别的日志很少使用。  
+> - 20、单元测试的知识储备 `KnowledgeReserveForUnitTesting20`  
+`@RunWith` junit的注解，通过这个注解使用SpringRunner.class，能够将junit和spring进行集成。后续的spring相关注解才会起效。  
+`@SpringBootTest` spring的注解，通过扫描应用程序中的配置来构建测试用的Spring上下文。  
+`@AutoConfigureMockMvc`	spring的注解，能够自动配置MockMvc对象实例，用来在模拟测试环境中发送http请求。  
+`@WebMvcTest` spring的注解，切片测试的一种。使之替换@SpringBootTest能将构建bean的范围限定于web层，但是web层的下层依赖bean，需要通过mock来模拟。也可以通过参数指定只实例化web层的某一个到多个controller。  
+`@RestClientTest` spring的注解，切片测试的一种。如果应用程序作为客户端访问其他Rest服务，可以通过这个注解来测试客户端的功能。  
+`@MybatisTest`	mybatis按照spring的习惯开发的注解，切片测试的一种。使之替换@SpringBootTest，能够将构建bean的返回限定于mybatis-mapper层。  
+`@JdbcTest`	spring的注解，切片测试的一种。如果应用程序中使用Jdbc作为持久层（spring的JdbcTemplate），那么可以使用该注解代替@SpringBootTest，限定bean的构建范围。
+`@DataJpaTest` spring的注解，切片测试的一种。如果使用Jpa作为持久层技术，可以使用这个注解。
+`@DataRedisTest` spring的注解，切片测试的一种。  
