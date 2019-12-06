@@ -168,6 +168,18 @@
             <version>2.10.6</version>
         </dependency>
 
+        <!-- 构造随机字符串：随机构造人名、地名、天气、学校、颜色、职业，甚至符合某正则表达式的字符串等 -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!-- 构造随机的复杂对象 -->
+        <dependency>
+            <groupId>org.jeasy</groupId>
+            <artifactId>easy-random-core</artifactId>
+            <version>4.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
