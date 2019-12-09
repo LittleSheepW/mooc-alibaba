@@ -70,4 +70,5 @@ TRACE日志的使用场景是:非常详细的系统运行信息，比如某个�
 `@JdbcTest`	spring的注解，切片测试的一种。如果应用程序中使用Jdbc作为持久层（spring的JdbcTemplate），那么可以使用该注解代替@SpringBootTest，限定bean的构建范围。
 `@DataJpaTest` spring的注解，切片测试的一种。如果使用Jpa作为持久层技术，可以使用这个注解。
 `@DataRedisTest` spring的注解，切片测试的一种。  
-> - 21、单元测试构造数据的正确姿势 `UnitTestConstructsTheCorrectPostureOfTheData21`
+> - 21、单元测试构造数据的正确姿势 `UnitTestConstructsTheCorrectPostureOfTheData21`  
+> - 22、单元测试之单测举例 `SingleTestExampleOfUnitTest22`  
