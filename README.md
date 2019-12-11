@@ -72,3 +72,4 @@ TRACE日志的使用场景是:非常详细的系统运行信息，比如某个�
 `@DataRedisTest` spring的注解，切片测试的一种。  
 > - 21、单元测试构造数据的正确姿势 `UnitTestConstructsTheCorrectPostureOfTheData21`  
 > - 22、单元测试之单测举例 `SingleTestExampleOfUnitTest22`  
+> - 23、Java学习宝典 `JavaStudyBook23`  
