@@ -75,4 +75,5 @@ TRACE日志的使用场景是:非常详细的系统运行信息，比如某个�
 > - 23、Java学习宝典 `JavaStudyBook23`  
 > - 24、代码调试的正确姿势 `CorrectPostureForCodeDebugging24`  
 > - 25、阅读源码的正确姿势 `TheCorrectPostureToReadTheSourceCode25`  
-> - 26、代码重构的正确姿势 `CorrectPostureForCodeRefactoring26`
+> - 26、代码重构的正确姿势 `CorrectPostureForCodeRefactoring26`  
+> - 27、Code Review的正确姿势 `CodeReviewCorrectPosture27`  
