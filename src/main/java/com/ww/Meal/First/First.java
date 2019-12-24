@@ -1,4 +1,4 @@
-package com.ww.Meal;
+package com.ww.Meal.First;
 
 /**
  * @author: Sun
