@@ -1,5 +1,11 @@
 package com.ww.EnumerationClassCorrectLearningPosture10.constant;
 
+import lombok.Getter;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Getter
 public enum CoinEnum {
 
     PENNY(1),
@@ -15,5 +21,18 @@ public enum CoinEnum {
 
     public int value() {
         return value;
+    }
+
+    // Cache
+    private static final Map<Integer, CoinEnum> cache = new HashMap<>();
+
+    static {
+        for (CoinEnum coinEnum : CoinEnum.values()) {
+            cache.put(coinEnum.getValue(), coinEnum);
+        }
+    }
+
+    public static CoinEnum getEnum(int value) {
+        return cache.getOrDefault(value, null);
     }
 }

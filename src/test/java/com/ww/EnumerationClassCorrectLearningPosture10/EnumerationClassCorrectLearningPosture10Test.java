@@ -3,6 +3,7 @@ package com.ww.EnumerationClassCorrectLearningPosture10;
 import com.ww.EnumerationClassCorrectLearningPosture10.constant.ActivityStatesEnum;
 import com.ww.EnumerationClassCorrectLearningPosture10.constant.CoinEnum;
 import com.ww.EnumerationClassCorrectLearningPosture10.constant.OperationEnum;
+import com.ww.EnumerationClassCorrectLearningPosture10.utils.EnumUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Assert;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @author: Sun
@@ -90,6 +92,26 @@ public class EnumerationClassCorrectLearningPosture10Test {
         System.out.println(deaclare.ordinal());
 
         System.out.println(deaclare.nextState().ordinal());
+    }
+
+    @Test
+    public void enumUtilsTest() {
+        int key = 5;
+
+        CoinEnum targetEnum = CoinEnum.NICKEL;
+
+        CoinEnum anEnum = CoinEnum.getEnum(key);
+        Assert.assertEquals(targetEnum, anEnum);
+
+        // 使用缓存
+        Optional<CoinEnum> enumWithCache = EnumUtils.getEnumWithCache(CoinEnum.class, CoinEnum::getValue, key);
+        Assert.assertTrue(enumWithCache.isPresent());
+        Assert.assertEquals(targetEnum, enumWithCache.get());
+
+        // 不使用缓存（遍历）
+        Optional<CoinEnum> enumResult = EnumUtils.getEnum(CoinEnum.class, CoinEnum::getValue, key);
+        Assert.assertTrue(enumResult.isPresent());
+        Assert.assertEquals(targetEnum, enumResult.get());
     }
 
 }
